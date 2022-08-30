@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication
 @ComponentScan(basePackages = {"com.sprint.*"})
 @EntityScan(basePackages = {"com.sprint.*"})
 @EnableJpaRepositories(basePackages = {"com.sprint.*"})

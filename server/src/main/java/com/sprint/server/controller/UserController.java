@@ -29,6 +29,7 @@ public class UserController {
             List<User> users = userRepository.findAll();
             return new HttpApiResponse(users);
         }catch (Exception err){
+            log.error("[getAllUsers] Error: "+err);
             return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
         }
     }
@@ -40,6 +41,7 @@ public class UserController {
             Optional<User> user = userRepository.findById(id);
             return new HttpApiResponse(user);
         }catch (Exception err){
+            log.error("[getUserById] Error: "+err);
             return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
         }
     }
@@ -59,6 +61,7 @@ public class UserController {
             User generatedUser = userRepository.save(newUser);
             return new HttpApiResponse(generatedUser);
         }catch (Exception err){
+            log.error("[createNewUser] Error: "+err);
             return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
         }
     }
@@ -75,6 +78,7 @@ public class UserController {
             userRepository.deleteById(id);
             return new HttpApiResponse("User deleted successfully");
         }catch (Exception err){
+            log.error("[deleteUser] Error: "+err);
             return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
         }
     }
@@ -86,6 +90,7 @@ public class UserController {
             User updateUser = userRepository.save(user);
             return new HttpApiResponse(updateUser);
         }catch (Exception err){
+            log.error("[updateUser] Error: "+err);
             return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
         }
     }

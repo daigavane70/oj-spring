@@ -1,14 +1,17 @@
 package com.sprint.server.controller;
 
+import com.sprint.common.request.CreateUserRequest;
 import com.sprint.common.response.HttpApiResponse;
+import com.sprint.common.response.HttpErrorResponse;
 import com.sprint.repository.entity.User;
 import com.sprint.repository.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,15 +24,69 @@ public class UserController {
 
     @GetMapping("/user")
     public HttpApiResponse getAllUsers() {
-        log.info("[getAllUsers] Returning All the users");
-        List<User> users = userRepository.findAll();
-        return new HttpApiResponse(users);
+        try{
+            log.info("[getAllUsers] Returning All the users");
+            List<User> users = userRepository.findAll();
+            return new HttpApiResponse(users);
+        }catch (Exception err){
+            return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
+        }
     }
 
     @GetMapping("/user/{id}")
     public HttpApiResponse getUserById(@PathVariable Long id) {
-        log.info("[getAllUsers] Returning All the users");
-        Optional<User> user = userRepository.findById(id);
-        return new HttpApiResponse(user);
+        try{
+            log.info("[getUserById] Returning the user");
+            Optional<User> user = userRepository.findById(id);
+            return new HttpApiResponse(user);
+        }catch (Exception err){
+            return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
+        }
+    }
+
+    @PostMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public HttpApiResponse createNewUser(CreateUserRequest user) {
+        try{
+
+            log.info("[createNewUser] creating the new user for requestBody: {}", user);
+            String encodedPassword = Base64.getUrlEncoder().encodeToString(user.getPassword().getBytes(StandardCharsets.UTF_8));
+            User newUser = User.builder().
+                    email(user.getEmail()).
+                    name(user.getName()).
+                    mobile(user.getMobile()).
+                    password(encodedPassword).
+                    build();
+            User generatedUser = userRepository.save(newUser);
+            return new HttpApiResponse(generatedUser);
+        }catch (Exception err){
+            return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
+        }
+    }
+
+    @DeleteMapping(value = "/user")
+    public HttpApiResponse deleteUser(@RequestParam Long id){
+        try{
+            log.info("[deleteUser] deleting the user with id: {}", id);
+            Optional<User> foundUser = userRepository.findById(id);
+
+            if(foundUser.isEmpty())
+                throw new Exception("User not found with id: "+id);
+
+            userRepository.deleteById(id);
+            return new HttpApiResponse("User deleted successfully");
+        }catch (Exception err){
+            return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
+        }
+    }
+
+    @PutMapping(value = "/user")
+    public HttpApiResponse updateUser(User user){
+        try{
+            log.info("[updateUser] updating the user with details: {}", user);
+            User updateUser = userRepository.save(user);
+            return new HttpApiResponse(updateUser);
+        }catch (Exception err){
+            return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
+        }
     }
 }

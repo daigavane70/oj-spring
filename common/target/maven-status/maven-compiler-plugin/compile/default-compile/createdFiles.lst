@@ -1,0 +1,7 @@
+com\sprint\common\request\CreateUserRequest.class
+com\sprint\common\response\ContestResponse.class
+com\sprint\common\response\HttpApiResponse.class
+com\sprint\common\GetContestStatus.class
+com\sprint\common\response\HttpErrorResponse.class
+com\sprint\common\request\ContestRequest.class
+com\sprint\common\response\ContestResponse$Status.class

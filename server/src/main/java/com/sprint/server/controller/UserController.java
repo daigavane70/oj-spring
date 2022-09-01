@@ -38,6 +38,9 @@ public class UserController {
     public HttpApiResponse getUserById(@PathVariable Long id) {
         try{
             log.info("[getUserById] Returning the user");
+            if(!userRepository.existsById(id)){
+                throw new Exception("No user found with id: "+id);
+            }
             Optional<User> user = userRepository.findById(id);
             return new HttpApiResponse(user);
         }catch (Exception err){

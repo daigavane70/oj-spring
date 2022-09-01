@@ -25,8 +25,9 @@ public class UserController {
     @GetMapping("/user")
     public HttpApiResponse getAllUsers() {
         try{
-            log.info("[getAllUsers] Returning All the users");
+            log.info("[getAllUsers] request to get all users");
             List<User> users = userRepository.findAll();
+            log.info("[getAllUsers] get all users: {}", users);
             return new HttpApiResponse(users);
         }catch (Exception err){
             log.error("[getAllUsers] Error: "+err);
@@ -38,12 +39,12 @@ public class UserController {
     public HttpApiResponse getUserById(@PathVariable Long id) {
         try{
             log.info("[getUserById] Returning the user");
-            if(!userRepository.existsById(id)){
+            if(!userRepository.existsById(id)) {
                 throw new Exception("No user found with id: "+id);
             }
             Optional<User> user = userRepository.findById(id);
             return new HttpApiResponse(user);
-        }catch (Exception err){
+        } catch (Exception err){
             log.error("[getUserById] Error: "+err);
             return new HttpApiResponse(false, null, new HttpErrorResponse(400, err.getMessage()));
         }

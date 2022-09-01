@@ -1,0 +1,46 @@
+target/
+.idea
+.DS_Store
+
+# app
+state/
+logs
+*/src/gen/java
+proto-files/
+
+# Rivals
+.svn
+.hg
+
+# Mac OS
+.DS_Store
+
+# Editor backup
+*.swp
+*~
+
+# IntelliJ IDEA project config
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# Maven
+target/
+.mvn
+
+# Gradle
+.gradle/
+
+.apt_generated_tests
+
+#lombok
+.factorypath
+
+

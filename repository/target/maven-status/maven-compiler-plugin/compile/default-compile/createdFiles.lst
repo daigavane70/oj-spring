@@ -1,5 +1,5 @@
-com\sprint\repository\entity\Contest.class
-com\sprint\repository\entity\User$UserBuilder.class
-com\sprint\repository\entity\User.class
-com\sprint\repository\repositories\ContestRepository.class
-com\sprint\repository\repositories\UserRepository.class
+com/sprint/repository/entity/User$UserBuilder.class
+com/sprint/repository/entity/Contest.class
+com/sprint/repository/entity/User.class
+com/sprint/repository/repositories/UserRepository.class
+com/sprint/repository/repositories/ContestRepository.class

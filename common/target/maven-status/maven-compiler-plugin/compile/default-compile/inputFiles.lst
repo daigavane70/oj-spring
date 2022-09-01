@@ -1,6 +1,4 @@
-C:\Users\rohit\IdeaProjects\oj-spring\common\src\main\java\com\sprint\common\GetContestStatus.java
-C:\Users\rohit\IdeaProjects\oj-spring\common\src\main\java\com\sprint\common\request\ContestRequest.java
-C:\Users\rohit\IdeaProjects\oj-spring\common\src\main\java\com\sprint\common\request\CreateUserRequest.java
-C:\Users\rohit\IdeaProjects\oj-spring\common\src\main\java\com\sprint\common\response\ContestResponse.java
-C:\Users\rohit\IdeaProjects\oj-spring\common\src\main\java\com\sprint\common\response\HttpApiResponse.java
-C:\Users\rohit\IdeaProjects\oj-spring\common\src\main\java\com\sprint\common\response\HttpErrorResponse.java
+/Users/upstox/IdeaProjects/oj/common/src/main/java/com/sprint/common/request/CreateUserRequest.java
+/Users/upstox/IdeaProjects/oj/common/src/main/java/com/sprint/common/response/HttpApiResponse.java
+/Users/upstox/IdeaProjects/oj/common/src/main/java/com/sprint/common/GetContestStatus.java
+/Users/upstox/IdeaProjects/oj/common/src/main/java/com/sprint/common/response/HttpErrorResponse.java

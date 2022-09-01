@@ -27,10 +27,10 @@ DROP TABLE IF EXISTS `contests`;
 CREATE TABLE `contests` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `startTime` datetime DEFAULT NULL,
-  `endTime` datetime DEFAULT NULL,
-  `totalQuestions` int DEFAULT NULL,
-  `description` JSON,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `total_questions` int DEFAULT NULL,
+  `description` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -43,6 +43,36 @@ LOCK TABLES `contests` WRITE;
 /*!40000 ALTER TABLE `contests` DISABLE KEYS */;
 INSERT INTO `contests` VALUES (1,'Contest1','2022-09-01 13:18:17','2022-09-01 20:18:17',5,'This is the first ever contest you can ever see or play');
 /*!40000 ALTER TABLE `contests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `question`
+--
+
+DROP TABLE IF EXISTS `question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `question` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `contest_id` int DEFAULT NULL,
+  `problem_statement` json DEFAULT NULL,
+  `constraints` json DEFAULT NULL,
+  `test_cases` json DEFAULT NULL,
+  `sample_tests` json DEFAULT NULL,
+  `max_score` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `contest_id` (`contest_id`),
+  CONSTRAINT `question_ibfk_1` FOREIGN KEY (`contest_id`) REFERENCES `contests` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `question`
+--
+
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `question` DISABLE KEYS */;
+/*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -80,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-01 16:55:59
+-- Dump completed on 2022-09-01 21:23:07

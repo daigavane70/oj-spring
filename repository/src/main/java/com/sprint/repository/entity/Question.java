@@ -11,28 +11,35 @@ import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "contest")
+@Table(name = "question")
 @TypeDefs({
         @TypeDef(name = "string-array", typeClass = StringArrayType.class),
         @TypeDef(name = "int-array", typeClass = IntArrayType.class),
         @TypeDef(name = "json", typeClass = JsonType.class)
 })
-public class Contest {
+public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
-    Integer totalQuestions;
+    Long contestId;
     @Type(type = "json")
     @Column(columnDefinition = "json")
-    List<String> description;
+    List<String> problemStatement;
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    List<String> constraints;
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    List<String> testCases;
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    List<String> sampleTests;
+    int maxScore;
 }

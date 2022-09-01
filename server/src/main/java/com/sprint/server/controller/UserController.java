@@ -58,6 +58,7 @@ public class UserController {
                     mobile(user.getMobile()).
                     password(encodedPassword).
                     build();
+
             User generatedUser = userRepository.save(newUser);
             return new HttpApiResponse(generatedUser);
         }catch (Exception err){

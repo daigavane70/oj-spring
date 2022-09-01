@@ -13,7 +13,7 @@ public class HttpApiResponse <T> {
     public HttpErrorResponse error;
 
     public HttpApiResponse(T data){
-        this.success = false;
+        this.success = true;
         this.data = data;
         this.error = null;
     }

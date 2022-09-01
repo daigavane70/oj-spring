@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,4 +21,6 @@ public class Contest {
     String name;
     LocalDateTime startTime;
     LocalDateTime endTime;
+    Integer totalQuestions;
+    List<String> description;
 }

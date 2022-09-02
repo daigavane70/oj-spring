@@ -27,9 +27,9 @@ DROP TABLE IF EXISTS `contests`;
 CREATE TABLE `contests` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `startTime` datetime DEFAULT NULL,
-  `endTime` datetime DEFAULT NULL,
-  `totalQuestions` int DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `total_questions` int DEFAULT NULL,
   `description` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -150,7 +150,7 @@ CREATE TABLE `test_cases` (
   `question_id` int DEFAULT NULL,
   `input` json DEFAULT NULL,
   `output` json DEFAULT NULL,
-  `explaination` json DEFAULT NULL,
+  `explanation` json DEFAULT NULL,
   `points` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `question_id` (`question_id`),

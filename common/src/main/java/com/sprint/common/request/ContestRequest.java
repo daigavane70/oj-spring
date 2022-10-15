@@ -1,5 +1,6 @@
 package com.sprint.common.request;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -10,10 +11,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ContestRequest {
     public String name;
-    public LocalDateTime startTime;
-    public LocalDateTime endTime;
+    public String startTime;
+    public String endTime;
     public Integer totalQuestions;
     public List<String> description;
 }

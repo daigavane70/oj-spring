@@ -82,6 +82,7 @@ DROP TABLE IF EXISTS `question`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `question` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) DEFAULT NULL,
   `contest_id` int DEFAULT NULL,
   `problem_statement` json DEFAULT NULL,
   `constraints` json DEFAULT NULL,

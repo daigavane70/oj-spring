@@ -12,6 +12,7 @@
         <module>server</module>
         <module>repository</module>
         <module>common</module>
+        <module>kafka</module>
     </modules>
 
     <properties>
@@ -51,7 +52,6 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
